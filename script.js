@@ -14,7 +14,7 @@ var uppercaseLetters = lowercaseLetters.map(letter => letter.toUpperCase());
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-    console.log("Hey! You clicked the button.");
+   // console.log("Hey! You clicked the button.");
 
 // 1. prompt user for password criteria
 //      a. password length between 8 and 128
@@ -25,31 +25,50 @@ var inputLength = prompt("Choose a password length between 8 and 128 characters"
         alert("Password length must be between 8 and 128");
         inputLength = prompt("Please choose a password length between 8 and 128");
     }
-var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+var confirmSymbols = confirm("Click OK to confirm if you would like to include special characters");
 var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
 var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
 var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
 
 // 2. validate the input
 
-while (confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
+while (confirmUpperCase === false && confirmLowerCase === false && confirmSymbols === false && confirmNumericCharacter === false) {
     alert("You must choose at least one parameter");
-    var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+    var confirmSymbols = confirm("Click OK to confirm if you would like to include special characters");
     var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
     var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
     var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters"); 
 }
 
 // log to see what info is being stored
-console.log(inputLength,confirmSpecialCharacter,confirmNumericCharacter,confirmLowerCase,confirmUpperCase);
+console.log(inputLength,confirmSymbols,confirmNumericCharacter,confirmLowerCase,confirmUpperCase);
 
 // 3. generate password based on criteria
 
+function createPassword (inputLength, confirmNumbers, confirmSymbols, confirmLowerCase, confirmUpperCase) {
+    const availableCharacters = [
+        ...(confirmSpecialCharacter ? symbols : []),
+        ...(confirmNumbers ? numbers :[]),
+        ...(confirmUpperCase ? uppercaseLetters : []),
+        ...(confirmLowerCase ? lowercaseLetters : [])
+    ];
+    
+     console.log(availableCharacters); 
+
+let password = " ";
+
+if(availableCharacters.inputLength < 4) return " ";
+
+for (let i = 0; i < inputLength; i++) {
+    const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+    password += availableCharacters[randomIndex];
+}
+return password;
+}
 
 
 
-
-    return "Generated password will go here.";
+    // return "Generated password will go here.";
 }
 
 // write password to the #password input
