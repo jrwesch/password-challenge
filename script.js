@@ -1,24 +1,15 @@
-
-/* 
-initialize variables for possible characters
-used method of mapping array for the letters so I didin't have to type out every single letter
-*/
-
-var numbers = [1,2,3,4,5,6,7,8,9,0];
 var symbols = ["!", "@", "#", "$", "%", "&", "*", "~"];
+var numbers = [1,2,3,4,5,6,7,8,9,0];
 var characterCodes = Array.from(Array(26)).map((_, i) => i + 97);
 var lowercaseLetters = characterCodes.map(code => String.fromCharCode(code));
 var uppercaseLetters = lowercaseLetters.map(letter => letter.toUpperCase());
 
-
-var generateBtn = document.querySelector("#generate");
-
-function generatePassword() {
-   // console.log("Hey! You clicked the button.");
-
-// 1. prompt user for password criteria
-//      a. password length between 8 and 128
-//      b. lowercase, uppercase, numbers, special characters
+/* 
+1. prompt user for password criteria:
+    a. password length between 8 and 128
+    b. lowercase, uppercase, numbers, special characters
+    c. includes validation if input is outside of parameters
+*/
 
 var inputLength = prompt("Choose a password length between 8 and 128 characters");
     while (inputLength < 8 || inputLength > 128) {
@@ -26,49 +17,53 @@ var inputLength = prompt("Choose a password length between 8 and 128 characters"
         inputLength = prompt("Please choose a password length between 8 and 128");
     }
 var confirmSymbols = confirm("Click OK to confirm if you would like to include special characters");
-var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
-var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
-var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+var confirmNumbers = confirm("Click OK to confirm if you would like to include numeric characters");    
+var confirmLowercase = confirm("Click OK to confirm if you would like to include lowercase characters");
+var confirmUppercase = confirm("Click OK to confirm if you would like to include uppercase characters");
+      
+// Loop if answer is outside the parameters  
 
-// 2. validate the input
+    while (confirmUppercase === false && confirmLowercase === false && confirmSymbols === false && confirmNumbers === false) {
+        alert("You must choose at least one parameter");
+        var confirmSymbols = confirm("Click OK to confirm if you would like to include special characters");
+        var confirmNumbers = confirm("Click OK to confirm if you would like to include numeric characters");    
+        var confirmLowercase = confirm("Click OK to confirm if you would like to include lowercase characters");
+        var confirmUppercase = confirm("Click OK to confirm if you would like to include uppercase characters"); 
+    }
 
-while (confirmUpperCase === false && confirmLowerCase === false && confirmSymbols === false && confirmNumericCharacter === false) {
-    alert("You must choose at least one parameter");
-    var confirmSymbols = confirm("Click OK to confirm if you would like to include special characters");
-    var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
-    var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
-    var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters"); 
-}
+console.log(inputLength,confirmSymbols,confirmNumbers,confirmLowercase,confirmUppercase);
 
-// log to see what info is being stored
-console.log(inputLength,confirmSymbols,confirmNumericCharacter,confirmLowerCase,confirmUpperCase);
-
-// 3. generate password based on criteria
-
-function createPassword (inputLength, confirmNumbers, confirmSymbols, confirmLowerCase, confirmUpperCase) {
+function createPassword(/*inputLength, confirmNumericCharacter, confirmNumericCharacter, confirmLowerCase, confirmUpperCase*/) {
     const availableCharacters = [
-        ...(confirmSpecialCharacter ? symbols : []),
+        ...(confirmSymbols ? symbols : []),
         ...(confirmNumbers ? numbers :[]),
-        ...(confirmUpperCase ? uppercaseLetters : []),
-        ...(confirmLowerCase ? lowercaseLetters : [])
+        ...(confirmLowercase ? lowercaseLetters : []),
+        ...(confirmUppercase ? uppercaseLetters : [])
     ];
     
-     console.log(availableCharacters); 
+/* 
+check if availableCharacters is correct:
+console.log(availableCharacters); 
+*/
 
 let password = " ";
-
-if(availableCharacters.inputLength < 4) return " ";
 
 for (let i = 0; i < inputLength; i++) {
     const randomIndex = Math.floor(Math.random() * availableCharacters.length);
     password += availableCharacters[randomIndex];
 }
-return password;
+    return password;
 }
 
+// generate password based on criteria
 
+var generateBtn = document.querySelector("#generate");
 
-    // return "Generated password will go here.";
+function generatePassword() {
+    
+// check to see that button works: console.log("Hey! You clicked the button.");
+
+    return createPassword();
 }
 
 // write password to the #password input
