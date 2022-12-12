@@ -43,7 +43,7 @@ The app can be used to generate passwords of lengths from 8 to 128 characters. I
 ## Links
 
 
-[Link to GitHub Repositorty for Password Generatro project](https://github.com/jrwesch/password-challenge) <br> 
+[Link to GitHub Repositorty for Password Generator project](https://github.com/jrwesch/password-challenge) <br> 
 [Link to GitHub Pages view of website](https://jrwesch.github.io/password-challenge/)
 
 
