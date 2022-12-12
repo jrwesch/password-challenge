@@ -1,7 +1,6 @@
-# password-challenge
-# Personal Portfolio
+# Password Challenge
 
-Deadline - Dec 5, 2022
+Deadline - Dec 12, 2022
 
 ## Description
 
@@ -34,7 +33,7 @@ THEN the password is either displayed in an alert or written to the page<br/>
 
 ## Site Preview
 
-![Screenshot of jrwesch password generator deployed on GitHub Pages]()
+![Screenshot of jrwesch password generator deployed on GitHub Pages](./images/pass-gen-screenshot.png)
 
 
 ## Usage
@@ -44,8 +43,8 @@ The app can be used to generate passwords of lengths from 8 to 128 characters. I
 ## Links
 
 
-[Link to GitHub Repositorty for Personal Portfolio Project](https://github.com/jrwesch/personal-portfolio) <br> 
-[Link to GitHub Pages view of website](https://jrwesch.github.io/personal-portfolio/)
+[Link to GitHub Repositorty for Password Generatro project](https://github.com/jrwesch/password-challenge) <br> 
+[Link to GitHub Pages view of website](https://jrwesch.github.io/password-challenge/)
 
 
 
